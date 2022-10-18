@@ -1,7 +1,7 @@
 {
-  "name": "taco-vue-template",
+  "name": "taco-admin-template",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,21 +13,27 @@
     "build:pro": "vite build --mode production"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.0.10",
+    "@vueuse/motion": "2.0.0-beta.12",
     "axios": "^0.27.2",
+    "crypto-js": "^4.1.1",
     "element-plus": "^2.2.15",
     "js-cookie": "^3.0.1",
     "json-bigint": "^1.0.0",
     "nprogress": "^0.2.0",
     "pinia": "2.0.0-rc.10",
     "qs": "^6.11.0",
+    "vite-svg-loader": "^3.6.0",
     "vue": "^3.2.37",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "@vitejs/plugin-vue": "^3.0.3",
+    "@vueuse/core": "^9.3.1",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",

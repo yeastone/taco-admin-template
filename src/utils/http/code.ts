@@ -18,7 +18,7 @@ const codeMessageMap: codeMessageMapTypes = {
 }
 
 const showCodeMessage = (code: number | string): string => {
-    return codeMessageMap[JSON.stringify(code)] || '未知错误!'
+    return codeMessageMap[JSON.stringify(code)]
 }
 
 export default showCodeMessage

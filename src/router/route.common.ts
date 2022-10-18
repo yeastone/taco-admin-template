@@ -1,29 +1,25 @@
-import { RouteRecordRaw } from "vue-router"
+import { RouteRecordRaw } from 'vue-router'
+import dashboardRoutes from './modules/dashboard'
+import systemRoutes from './modules/system'
 
 const commonRoutes: Array<RouteRecordRaw> = [
     {
-        path: "/",
-        component: () => import("@/views/index.vue"),
-        redirect: "/login",
+        path: '/',
+        component: () => import('@/views/index.vue'),
+        redirect: '/login',
         children: [
             {
-                path: "/login",
-                name: "login",
-                component: () => import("@/views/login/index.vue"),
+                path: '/login',
+                name: 'login',
+                component: () => import('@/views/login/index.vue'),
                 meta: {
-                    title: "登录",
-                },
-            },
-            {
-                path: "/datav",
-                name: "datav",
-                component: () => import("@/views/dataV/index.vue"),
-                meta: {
-                    title: "大屏",
+                    title: '登录',
                 },
             },
         ],
     },
+    ...dashboardRoutes,
+    ...systemRoutes,
 ]
 
 export default commonRoutes

@@ -11,7 +11,7 @@ import jsonBig from 'json-bigint'
 
 // 相关配置请参考：www.axios-js.com/zh-cn/docs/#axios-request-config-1
 const defaultConfig: AxiosRequestConfig = {
-    baseURL: '/',
+    baseURL: '/api',
     timeout: 60000,
     headers: {
         Accept: 'application/json, text/plain, */*',
@@ -128,14 +128,16 @@ class PureHttp {
         return new Promise((resolve, reject) => {
             PureHttp.axiosInstance
                 .request(config)
-                .then((response: any) => {
-                    const { errno } = response
-                    if (errno == 0) {
-                        resolve(response)
+                .then((response: ResponseData) => {
+                    const { errCode } = response
+                    if (errCode == 0) {
+                        resolve(response.data)
                     }
                     // 请求失败
-                    if (errno !== 0) {
-                        ElMessage.error(errorCode(errno))
+                    if (errCode !== 0) {
+                        console.log(errorCode(errCode))
+
+                        ElMessage.error(errorCode(errCode) || response.msg || '未知错误')
                         reject(new Error(response.msg || '未知错误'))
                     }
                 })

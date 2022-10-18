@@ -4,7 +4,7 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const data = getToken()
 let token = ''
-let name = ''
+let name = 'admin'
 if (data) {
     const dataJson = JSON.parse(data)
     if (dataJson) {
@@ -19,6 +19,9 @@ export const useUserStore = defineStore({
         token,
         name,
         expired: 0,
+        // 登录页状态 0：登陆 1 注册 3 忘记密码 默认0
+        loginType: 0,
+        avatar: new URL('../../assets/taco.svg', import.meta.url).href,
     }),
     getters: {
         nameLength: state => state.name.length,
@@ -29,6 +32,9 @@ export const useUserStore = defineStore({
         },
         setName(name: string) {
             this.name = name
+        },
+        SET_LOGINTYPE(value: number) {
+            this.loginType = value
         },
     },
 })

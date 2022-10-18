@@ -5,6 +5,7 @@ import path from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import svgLoader from 'vite-svg-loader'
 
 import viteCompression from 'vite-plugin-compression'
 
@@ -18,6 +19,7 @@ export default defineConfig({
         Components({
             resolvers: [ElementPlusResolver()],
         }),
+        svgLoader(),
         // gzip压缩 生产环境生成 .gz 文件
         viteCompression({
             verbose: true,
@@ -38,15 +40,14 @@ export default defineConfig({
     },
 
     server: {
-        port: 8080, // 端口号
+        port: 8844, // 端口号
         host: true, // host设置为true才可以使用network的形式，以ip访问项目
-        open: true,  // 自动打开浏览器
+        open: true, // 自动打开浏览器
         https: false, // https模式
         cors: true, // 跨域设置允许
         proxy: {
             '/api/': {
-                // target: 'https://ybp.getui.com/api/',
-                // target: 'http://pop.cc.test.plat.ge.cn/api/',
+                target: 'http://192.168.101.90:6060',
                 changeOrigin: true, // 允许跨域
                 rewrite: p => p.replace(/^\/api/, ''),
             },
@@ -54,7 +55,7 @@ export default defineConfig({
     },
     build: {
         reportCompressedSize: false,
-         // 消除打包大小超过500kb警告
+        // 消除打包大小超过500kb警告
         chunkSizeWarningLimit: 2000,
         terserOptions: {
             compress: {
